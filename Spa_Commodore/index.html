@@ -581,11 +581,12 @@ let keyLight = null;
 let fillLight = null;
 let rimLight = null;
 let hemiLight = null;
-let keyLightWidth = 5.0, keyLightHeight = 4.0;
-let fillLightWidth = 4.0, fillLightHeight = 3.0;
-let rimLightWidth = 4.0, rimLightHeight = 3.0;
+// Large softboxes for a clean catalogue/product-photography look.
+let keyLightWidth = 9.0, keyLightHeight = 6;
+let fillLightWidth = 20.0, fillLightHeight = 5.5;
+let rimLightWidth = 20.0, rimLightHeight = 5.5;
 let currentLightPreset = 'setup1';
-let lightIntensity = 2.0; // slider midpoint (50) preserves the current lighting level
+let lightIntensity = 1.0; // slider midpoint (50) = authored studio-light intensity
 let fitReferenceHeight = 0;
 let fitReferenceAspect = 1;
 let fitReferenceDistance = 1;
@@ -593,13 +594,17 @@ let fitDirection = new THREE.Vector3(1, 0.6, 1).normalize();
 let fitTarget = new THREE.Vector3();
 
 const LIGHT_PRESETS = {
+  // STUDIO 01 — soft commercial hero lighting. Broad key gives long, clean
+  // highlights across the acrylic while the weaker fill preserves shape.
   setup1: {
-    key: 5.5, fill: 3.0, rim: 3.2, hemi: 0.500, exposure: 1.08, env: 0.24,
-    keyPos: [5.0, 8.5, 4.5], fillPos: [-4.5, 6.0, 5.5], rimPos: [-4.0, 7.5, -7.5]
+    key: 4.2, fill: 1.65, rim: 2.35, hemi: 0.22, exposure: 1.02, env: 0.72,
+    keyPos: [6.5, 8.0, 5.5], fillPos: [-5.5, 4.5, 4.0], rimPos: [-4.5, 7.0, -6.5]
   },
+  // STUDIO 02 — slightly more dramatic rear separation, useful for darker
+  // shell/cabinet finishes while still retaining a clean studio appearance.
   setup2: {
-    key: 4.8, fill: 3.2, rim: 3.6, hemi: 0.500, exposure: 1.10, env: 0.28,
-    keyPos: [4.5, 9.0, 3.5], fillPos: [-5.0, 6.5, 5.0], rimPos: [-4.5, 8.0, -8.0]
+    key: 3.8, fill: 1.35, rim: 3.1, hemi: 0.18, exposure: 1.00, env: 0.82,
+    keyPos: [5.0, 9.0, 3.0], fillPos: [-6.0, 4.0, 5.5], rimPos: [-5.5, 7.5, -7.5]
   }
 };
 
@@ -770,9 +775,8 @@ function init() {
   const lightIntensitySlider = document.getElementById('lightIntensity');
   const intensityValue = document.getElementById('intensityValue');
   lightIntensitySlider.addEventListener('input', () => {
-    // 0–100 UI range with the midpoint preserving the current 2.0x lighting.
-    // 50 = current level, 100 = 4.0x, 0 = lights off.
-    lightIntensity = Number(lightIntensitySlider.value) / 25;
+    // 0–100 UI range: 50 = authored studio rig, 100 = 2x, 0 = lights off.
+    lightIntensity = Number(lightIntensitySlider.value) / 50;
     intensityValue.textContent = `${lightIntensitySlider.value}%`;
     applyLightingPreset(currentLightPreset);
   });
