@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A5 Spas – 3D Product Experience</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#202020;font-family:Arial,Helvetica,sans-serif}
+#app{height:100dvh;width:100%;position:relative}
+#stage{position:absolute;inset:0;min-width:0;background:#fff}
+#webgl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.brand{position:absolute;top:15px;left:16px;z-index:5;font-weight:700;font-size:15px;letter-spacing:5px}
+.subbrand{position:absolute;top:36px;left:16px;z-index:5;font-size:8px;letter-spacing:2px;color:#777}
+.product-name{position:absolute;top:63px;left:16px;z-index:5;font-size:17px;font-weight:600;color:#202020}
+#hint{position:absolute;left:50%;bottom:25px;transform:translateX(-50%);font-size:10px;letter-spacing:1px;color:#888;z-index:5;pointer-events:none}
+#help{position:absolute;right:18px;top:18px;width:44px;height:44px;border:0;background:#292929;color:#fff;font-size:23px;z-index:6;cursor:pointer}
+#controls{position:fixed;left:18px;bottom:125px;display:flex;gap:8px;z-index:60;pointer-events:auto}
+.ctrl{width:38px;height:38px;border-radius:50%;border:1px solid #ddd;background:#fff;color:#222;cursor:pointer;font-size:16px}
+#loading{position:absolute;inset:0;background:#fff;z-index:20;display:flex;align-items:center;justify-content:center}
+.loadbox{width:260px;text-align:center}
+.loadtitle{font-size:11px;letter-spacing:2px;color:#555}
+.bar{height:1px;background:#ddd;margin:13px 0 8px}
+.bar span{display:block;height:100%;width:0;background:#222}
+.loadpct{font-size:10px;color:#777}
+.loaderror{font-size:12px;line-height:1.5;color:#333}
+.loaderror strong{display:block;margin-bottom:7px;font-size:14px}
+
+aside{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(255,255,255,.97);border-top:1px solid #e5e5e5;padding:14px 22px 16px;box-shadow:0 -10px 28px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:34px;overflow-x:auto;overflow-y:hidden;backdrop-filter:blur(10px)}
+.option-group{display:flex;align-items:center;gap:18px;flex:0 0 auto;min-width:0}
+.section-title{margin:0;font-size:11px;font-weight:700;letter-spacing:.55px;white-space:nowrap}
+.swatches{display:grid;grid-template-columns:repeat(4,64px);gap:12px;margin:0;align-items:start}
+.swatch-wrap{width:auto;text-align:center;min-width:0;display:flex;flex-direction:column;align-items:center}
+.swatch{width:50px;height:50px;border-radius:50%;border:1px solid #a8a8a8;padding:0;background:#ddd;cursor:pointer;position:relative;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.swatch:after{content:"";position:absolute;inset:-4px;border:1.5px solid transparent;border-radius:50%;transition:border-color .18s ease}
+.swatch:hover{transform:translateY(-2px);box-shadow:0 5px 12px rgba(0,0,0,.10)}
+.swatch.selected:after{border-color:#202020}
+.swatch-inner{width:100%;height:100%;display:block;border-radius:50%}
+.label{margin-top:7px;font-size:9px;line-height:1.12;max-width:74px;color:#222;white-space:nowrap}
+.cab-sandalwood .swatch-inner{background:radial-gradient(circle at 32% 25%,#a97945,#765332 58%,#4a372a)}
+.cab-ashwood .swatch-inner{background:linear-gradient(135deg,#7a7a7a,#a7a7a7 42%,#5f5f5f)}
+.cab-chestnut .swatch-inner{background:radial-gradient(circle at 35% 28%,#5c4742,#2c2525 60%,#1b1818)}
+.shell-white .swatch-inner{background:linear-gradient(145deg,#fff,#ececec)}
+.shell-grey .swatch-inner{background:linear-gradient(145deg,#bdbdbd,#909090)}
+.shell-moonstone .swatch-inner{background:repeating-linear-gradient(135deg,#fafafa 0 7px,#d5d5d5 8px,#f5f5f5 12px)}
+.shell-desert .swatch-inner{background:linear-gradient(135deg,#d2cbc1,#a59b8d 48%,#e5ded4)}
+.shell-smoked .swatch-inner{background:radial-gradient(circle at 28% 26%,#777,#242424 52%,#050505)}
+.actions{display:flex;gap:10px;flex:0 0 auto}
+.action{border:0;background:#292929;color:#fff;padding:12px 16px;font-size:10px;font-weight:700;letter-spacing:.15px;cursor:pointer;transition:background .18s ease,transform .18s ease;white-space:nowrap}.action:hover{background:#1f1f1f;transform:translateY(-1px)}
+#status{margin:0;text-align:center;font-size:9px;line-height:1.35;color:#777;min-width:86px;max-width:120px}
+#materialInfo{margin-top:8px;font-size:9px;line-height:1.45;color:#999;text-align:center}
+.shell-silver .swatch-inner{background:linear-gradient(145deg,#f4f5f3 0%,#cfd2cf 38%,#eef0ed 67%,#b9beb9 100%)}
+.shell-midnight .swatch-inner{background:linear-gradient(145deg,#27303a 0%,#10151c 38%,#34414d 63%,#0a0e13 100%)}
+.shell-espresso .swatch-inner{background:linear-gradient(145deg,#63483c 0%,#33251f 40%,#6e4b3b 69%,#211817 100%)}
+.shell-ocean .swatch-inner{background:linear-gradient(145deg,#0b5f94 0%,#063964 35%,#2478b0 60%,#06284b 100%)}
+.cab-lightgrey .swatch-inner{background:repeating-linear-gradient(0deg,#b8b8b5 0 14px,#d7d7d4 15px 18px,#9f9f9c 19px 20px)}
+.cab-charcoal .swatch-inner{background:repeating-linear-gradient(0deg,#555 0 13px,#686868 14px 17px,#4b4b4b 18px 19px)}
+.cab-black .swatch-inner{background:repeating-linear-gradient(0deg,#202020 0 13px,#373737 14px 17px,#171717 18px 19px)}
+.cab-darkgrey .swatch-inner{background:repeating-linear-gradient(0deg,#757575 0 13px,#878787 14px 17px,#686868 18px 19px)}
+.lighting-row{display:flex;align-items:center;gap:18px}.lighting-controls{display:flex;gap:7px;margin:0}.light-btn{height:34px;min-width:92px;border:1px solid #d7d7d7;background:#fff;color:#2a2a2a;font-size:9px;font-weight:700;letter-spacing:.5px;cursor:pointer;transition:all .18s ease}.light-btn:hover{border-color:#222;background:#fafafa}.light-btn.selected{background:#292929;color:#fff;border-color:#292929}
+.intensity-row{width:220px;margin:0}.intensity-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;font-size:8px;font-weight:700;letter-spacing:.55px;color:#555}.intensity-slider{width:100%;height:4px;margin:0;accent-color:#292929;cursor:pointer}
+
+@media(max-width:1100px){
+  #stage{height:100vh;width:100vw}
+  .brand{top:12px;left:13px;font-size:13px;letter-spacing:4px}
+  .subbrand{top:31px;left:13px;font-size:7px}
+  .product-name{top:52px;left:13px;font-size:15px}
+  #hint{bottom:175px;font-size:9px;text-align:center;white-space:nowrap}
+  #controls{left:13px;bottom:140px}
+  .option-group{gap:12px}
+  aside{justify-content:flex-start;padding:12px 14px 14px;gap:22px}
+  .swatches{grid-template-columns:repeat(4,58px);gap:9px}
+  .swatch{width:46px;height:46px}
+  .label{font-size:8px;max-width:68px}
+  .section-title{font-size:10px}
+  .lighting-row{gap:12px}
+  .lighting-controls{gap:6px}
+  .light-btn{height:32px;min-width:82px;font-size:8px}
+  .intensity-row{width:190px}
+}
+
+@media(max-width:700px){
+  #hint{display:none}
+  #controls{left:12px;bottom:125px}
+  .ctrl{width:36px;height:36px}
+  aside{padding:10px 12px 12px;gap:18px}
+  .option-group{flex-direction:column;align-items:flex-start;gap:8px}
+  .swatches{grid-template-columns:repeat(4,52px);gap:6px}
+  .swatch{width:42px;height:42px}
+  .lighting-row{flex-direction:column;align-items:flex-start;gap:8px}
+  .intensity-row{width:170px}
+}
+
+/* Narrow portrait layout for mobile/tablet pages. Desktop/fullscreen remains unchanged. */
+@media (max-width: 900px) and (orientation: portrait){
+  #app,#stage{min-height:100dvh;height:100dvh;width:100vw}
+  #controls{left:12px;bottom:auto;top:70px;gap:6px}
+  .ctrl{width:34px;height:34px}
+  aside{
+    left:0;right:0;bottom:0;
+    width:100%;
+    height:clamp(132px, 30.5dvh, 160px);
+    max-height:clamp(132px, 17.5dvh, 160px);
+    padding:6px 6px calc(4px + env(safe-area-inset-bottom));
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    gap:1px;
+    overflow:hidden;
+  }
+  .option-group{
+    width:auto;
+    max-width:100%;
+    flex:0 0 auto;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+  }
+ <style>
+* { box-sizing: border-box; }
+html, body { 
+  margin: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: hidden; 
+  background: #fff; 
+  color: #202020; 
+  font-family: Arial, Helvetica, sans-serif; 
+}
+
+/* Master Layout Framework */
+#app { 
+  height: 100dvh; 
+  width: 100%; 
+  display: flex; 
+  flex-direction: row; /* Desktop Split Layout */
+  position: relative; 
+}
+
+/* Main 3D Area (2/3 Width on Left) */
+#stage { 
+  position: relative;
+  flex: 0 0 66.666%;
+  width: 66.666%;
+  height: 100%;
+  background: #fff; 
+}
+#webgl { 
+  position: absolute; 
+  inset: 0; 
+  width: 100%; 
+  height: 100%; 
+  display: block; 
+  touch-action: none; 
+}
+
+/* Control Panel (1/3 Width on Right) */
+aside { 
+  flex: 0 0 33.333%;
+  width: 33.333%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.98); 
+  border-left: 1px solid #e5e5e5; 
+  border-top: 0;
+  padding: 40px 24px; 
+  box-shadow: -10px 0 28px rgba(0,0,0,.04); 
+  display: flex; 
+  flex-direction: column; /* Stack options vertically */
+  align-items: stretch; 
+  justify-content: flex-start; 
+  gap: 32px; 
+  overflow-x: hidden; 
+  overflow-y: auto; /* Scroll panel if content overflows */
+  backdrop-filter: blur(10px); 
+}
+
+/* Overlay & Branding Elements inside the 3D Stage */
+.brand { position: absolute; top: 15px; left: 16px; z-index: 5; font-weight: 700; font-size: 15px; letter-spacing: 5px; }
+.subbrand { position: absolute; top: 36px; left: 16px; z-index: 5; font-size: 8px; letter-spacing: 2px; color: #777; }
+.product-name { position: absolute; top: 63px; left: 16px; z-index: 5; font-size: 17px; font-weight: 600; color: #202020; }
+#hint { position: absolute; left: 50%; bottom: 25px; transform: translateX(-50%); font-size: 10px; letter-spacing: 1px; color: #888; z-index: 5; pointer-events: none; }
+#help { position: absolute; right: 18px; top: 18px; width: 44px; height: 44px; border: 0; background: #292929; color: #fff; font-size: 23px; z-index: 6; cursor: pointer; }
+#controls { position: absolute; left: 18px; bottom: 25px; display: flex; gap: 8px; z-index: 60; pointer-events: auto; }
+.ctrl { width: 38px; height: 38px; border-radius: 50%; border: 1px solid #ddd; background: #fff; color: #222; cursor: pointer; font-size: 16px; }
+
+/* Loading Screens */
+#loading { position: absolute; inset: 0; background: #fff; z-index: 20; display: flex; align-items: center; justify-content: center; }
+.loadbox { width: 260px; text-align: center; }
+.loadtitle { font-size: 11px; letter-spacing: 2px; color: #555; }
+.bar { height: 1px; background: #ddd; margin: 13px 0 8px; }
+.bar span { display: block; height: 100%; width: 0; background: #222; }
+.loadpct { font-size: 10px; color: #777; }
+.loaderror { font-size: 12px; line-height: 1.5; color: #333; }
+.loaderror strong { display: block; margin-bottom: 7px; font-size: 14px; }
+
+/* Control Panel Component Styles */
+.option-group { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.section-title { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .55px; uppercase; color: #555; }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; width: 100%; }
+.swatch-wrap { text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.swatch { width: 48px; height: 48px; border-radius: 50%; border: 1px solid #a8a8a8; padding: 0; background: #ddd; cursor: pointer; position: relative; transition: transform .18s ease, box-shadow .18s ease; }
+.swatch:after { content: ""; position: absolute; inset: -4px; border: 1.5px solid transparent; border-radius: 50%; transition: border-color .18s ease; }
+.swatch:hover { transform: translateY(-2px); box-shadow: 0 5px 12px rgba(0,0,0,.10); }
+.swatch.selected:after { border-color: #202020; }
+.swatch-inner { width: 100%; height: 100%; display: block; border-radius: 50%; }
+.label { margin-top: 8px; font-size: 10px; line-height: 1.2; color: #222; text-align: center; }
+
+/* 3D Designer Asset Gradients */
+.cab-sandalwood .swatch-inner{background:radial-gradient(circle at 32% 25%,#a97945,#765332 58%,#4a372a)}
+.cab-ashwood .swatch-inner{background:linear-gradient(135deg,#7a7a7a,#a7a7a7 42%,#5f5f5f)}
+.cab-chestnut .swatch-inner{background:radial-gradient(circle at 35% 28%,#5c4742,#2c2525 60%,#1b1818)}
+.shell-white .swatch-inner{background:linear-gradient(145deg,#fff,#ececec)}
+.shell-grey .swatch-inner{background:linear-gradient(145deg,#bdbdbd,#909090)}
+.shell-moonstone .swatch-inner{background:repeating-linear-gradient(135deg,#fafafa 0 7px,#d5d5d5 8px,#f5f5f5 12px)}
+.shell-desert .swatch-inner{background:linear-gradient(135deg,#d2cbc1,#a59b8d 48%,#e5ded4)}
+.shell-smoked .swatch-inner{background:radial-gradient(circle at 28% 26%,#777,#242424 52%,#050505)}
+.shell-silver .swatch-inner{background:linear-gradient(145deg,#f4f5f3 0%,#cfd2cf 38%,#eef0ed 67%,#b9beb9 100%)}
+.shell-midnight .swatch-inner{background:linear-gradient(145deg,#27303a 0%,#10151c 38%,#34414d 63%,#0a0e13 100%)}
+.shell-espresso .swatch-inner{background:linear-gradient(145deg,#63483c 0%,#33251f 40%,#6e4b3b 69%,#211817 100%)}
+.shell-ocean .swatch-inner{background:linear-gradient(145deg,#0b5f94 0%,#063964 35%,#2478b0 60%,#06284b 100%)}
+.cab-lightgrey .swatch-inner{background:repeating-linear-gradient(0deg,#b8b8b5 0 14px,#d7d7d4 15px 18px,#9f9f9c 19px 20px)}
+.cab-charcoal .swatch-inner{background:repeating-linear-gradient(0deg,#555 0 13px,#686868 14px 17px,#4b4b4b 18px 19px)}
+.cab-black .swatch-inner{background:repeating-linear-gradient(0deg,#202020 0 13px,#373737 14px 17px,#171717 18px 19px)}
+.cab-darkgrey .swatch-inner{background:repeating-linear-gradient(0deg,#757575 0 13px,#878787 14px 17px,#686868 18px 19px)}
+
+/* Functional Interface Controls */
+.lighting-row { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; width: 100%; }
+.lighting-controls { display: flex; gap: 8px; width: 100%; }
+.light-btn { flex: 1; height: 38px; border: 1px solid #d7d7d7; background: #fff; color: #2a2a2a; font-size: 10px; font-weight: 700; letter-spacing: .5px; cursor: pointer; transition: all .18s ease; }
+.light-btn:hover { border-color: #222; background: #fafafa; }
+.light-btn.selected { background: #292929; color: #fff; border-color: #292929; }
+.intensity-row { width: 100%; }
+.intensity-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px; font-size: 9px; font-weight: 700; letter-spacing: .55px; color: #555; }
+.intensity-slider { width: 100%; height: 5px; margin: 0; accent-color: #292929; cursor: pointer; }
+.actions { display: flex; gap: 10px; width: 100%; margin-top: 10px; }
+.action { flex: 1; border: 0; background: #292929; color: #fff; padding: 14px 16px; font-size: 11px; font-weight: 700; letter-spacing: .15px; cursor: pointer; transition: background .18s ease, transform .18s ease; text-align: center; }
+.action:hover { background: #1f1f1f; transform: translateY(-1px); }
+#status { margin: 10px 0 0; text-align: center; font-size: 10px; color: #777; width: 100%; }
+#materialInfo { margin-top: 8px; font-size: 10px; color: #999; text-align: center; width: 100%; }
+
+/* ==========================================================================
+   SMART RESPONSIVE LAYOUT (Mobile Tablets & Portrait Viewports)
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Resets application wrapper boundaries */
+  #app { 
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Pins the 3D frame strictly to the top - leaves plenty of room */
+  #stage { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82dvh; 
+    
+    /* ADD THIS LINE: Makes the 3D model container resize/shift smoothly */
+    transition: height 0.35s cubic-bezier(0.25, 1, 0.5, 1); 
+  }
+  
+  /* ADD THIS NEW BLOCK: Shrinks or lifts the model framework when the panel is open */
+  body.panel-expanded #stage {
+    height: 60dvh !important; /* Locks the 3D scene perfectly within the top 60% of the screen */
+  }
+
+  
+  /* Sleek, ultra-compact default menu sheet position */
+  aside { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%; 
+    height: 18dvh; /* Compact state: only shows the 1st row cleanly */
+    
+    border-left: 0;
+    border-top: 1px solid #e5e5e5; 
+    padding: 24px 18px calc(10px + env(safe-area-inset-bottom)); 
+    gap: 16px; 
+    box-shadow: 0 -12px 32px rgba(0,0,0,.08); 
+    background: rgba(255, 255, 255, 0.98);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Smooth sliding transition */
+    transition: height 0.35s cubic-bezier(0.25, 1, 0.5, 1); 
+    z-index: 90;
+  }
+
+  /* YOUR CONSOLE FIX: Perfect height expansion to reveal all 3 rows */
+  aside.expanded {
+    height: 40dvh !important;
+    max-height: 40dvh !important;
+  }
+
+  /* Keeps the down arrow locked in when expanded */
+  aside.expanded::before {
+    content: "▼" !important;
+    top: 6px;
+  }
+
+  /* Elegant Upward Arrow Visual Indicator */
+  aside::before {
+    content: "▲";
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px; 
+    color: #999;    
+    font-weight: bold;
+    animation: bounceIndicator 2s infinite;
+    pointer-events: none; 
+    z-index: 100;
+  }
+
+  /* Enhanced bouncing micro-animation loop */
+  @keyframes bounceIndicator {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+    50% { transform: translate(-50%, -5px); opacity: 1; }
+  }
+
+  /* Clean row framework inside the scrollable drawer */
+  .option-group { 
+    gap: 6px; 
+    width: 100%;
+    margin: 0;
+    flex-shrink: 0; 
+  }
+  .section-title { 
+    font-size: 11px; 
+    margin-bottom: 2px;
+  }
+  .swatches { 
+    gap: 10px; 
+  }
+  .swatch { 
+    width: 46px; 
+    height: 46px; 
+  } 
+  .label { 
+    font-size: 10px; 
+    margin-top: 4px; 
+    white-space: normal; 
+  }
+  
+  /* Interface Controls Layout */
+  .lighting-row { 
+    gap: 6px; 
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .lighting-controls { 
+    gap: 6px; 
+    width: 100%;
+  }
+  .light-btn { 
+    height: 38px; 
+    font-size: 10px; 
+  } 
+  .intensity-row {
+    margin-top: 2px;
+  }
+  .intensity-head { 
+    margin-bottom: 2px; 
+  }
+  .intensity-slider { 
+    height: 10px; 
+  } 
+  
+  /* Action buttons layout */
+  .actions { 
+    margin-top: 4px; 
+    width: 100%;
+    flex-shrink: 0;
+  }
+  .action { 
+    padding: 12px; 
+    font-size: 11px; 
+  }
+  
+  #hint { display: none; }
+  #controls { bottom: 15px; left: 15px; }
+}
+	</style>
+
+</head>
+<body>
+<div id="app">
+  <main id="stage">
+    <canvas id="webgl"></canvas>
+    <div class="brand">British Hot Tubs</div>
+    <div class="subbrand">3D PRODUCT EXPERIENCE</div>
+    <div class="product-name" id="productName"></div>
+    <div id="hint">DRAG TO ROTATE • SCROLL TO ZOOM</div>
+    <div id="controls">
+      <button class="ctrl" id="reset" title="Reset view" aria-label="Reset view">↻</button>
+      <button class="ctrl" id="play" title="Pause rotation" aria-label="Pause rotation">❚❚</button>
+      <button class="ctrl" id="full" title="Fullscreen">⛶</button>
+    </div>
+
+    <div id="loading">
+      <div class="loadbox">
+        <div class="loadtitle" id="loadTitle"></div>
+        <div class="bar"><span id="loadBar"></span></div>
+        <div class="loadpct" id="loadPct">0%</div>
+      </div>
+    </div>
+  </main>
+
+  <aside id="panel">
+    <div class="option-group shell-group">
+      <h3 class="section-title">SHELL OPTIONS</h3>
+      <div class="swatches">
+        <div class="swatch-wrap shell-silver"><button class="swatch" data-type="shell" data-value="silver-marble" aria-label="Silver Marble"><span class="swatch-inner"></span></button><div class="label">Silver Marble</div></div>
+        <div class="swatch-wrap shell-midnight"><button class="swatch" data-type="shell" data-value="midnight-opal" aria-label="Midnight Opal"><span class="swatch-inner"></span></button><div class="label">Midnight Opal</div></div>
+        <div class="swatch-wrap shell-white-gloss"><button class="swatch" data-type="shell" data-value="white-gloss" aria-label="White Gloss"><span class="swatch-inner"></span></button><div class="label">White Gloss</div></div>
+        <div class="swatch-wrap shell-ocean"><button class="swatch" data-type="shell" data-value="ocean-wave" aria-label="Ocean Wave"><span class="swatch-inner"></span></button><div class="label">Ocean Wave</div></div>
+      </div>
+    </div>
+
+    <div class="option-group cabinet-group">
+      <h3 class="section-title">CABINET OPTIONS</h3>
+      <div class="swatches">
+        <div class="swatch-wrap cab-lightgrey"><button class="swatch" data-type="cabinet" data-value="ash-light-grey" aria-label="Ash (Light Grey)"><span class="swatch-inner"></span></button><div class="label">Ash (Light Grey)</div></div>
+        <div class="swatch-wrap cab-charcoal"><button class="swatch" data-type="cabinet" data-value="charcoal" aria-label="Charcoal"><span class="swatch-inner"></span></button><div class="label">Charcoal</div></div>
+        <div class="swatch-wrap cab-black"><button class="swatch" data-type="cabinet" data-value="black" aria-label="Black"><span class="swatch-inner"></span></button><div class="label">Black</div></div>
+        <div class="swatch-wrap cab-darkgrey"><button class="swatch" data-type="cabinet" data-value="dark-grey" aria-label="Dark Grey"><span class="swatch-inner"></span></button><div class="label">Dark Grey</div></div>
+      </div>
+    </div>
+
+    <div class="option-group lighting-group">
+      <h3 class="section-title lighting-title">LIGHTING SETUP</h3>
+      <div class="lighting-row">
+        <div class="lighting-controls">
+          <button class="light-btn selected" data-light="setup1">STUDIO 01</button>
+          <button class="light-btn" data-light="setup2">STUDIO 02</button>
+        </div>
+        <div class="intensity-row">
+          <div class="intensity-head"><span>MASTER LIGHT INTENSITY</span><span id="intensityValue">50%</span></div>
+          <input id="lightIntensity" class="intensity-slider" type="range" min="0" max="100" value="50" step="1" aria-label="Master light intensity">
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+    </div>
+    <div id="status">Loading Westwood…</div>
+  </aside>
+</div>
+
+<script type="importmap">
+{
+  "imports":{
+    "three":"https://cdn.jsdelivr.net/npm/three@0.181.1/build/three.module.js",
+    "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.181.1/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {HDRLoader} from 'three/addons/loaders/HDRLoader.js';
+import {RectAreaLightUniformsLib} from 'three/addons/lights/RectAreaLightUniformsLib.js';
+
+const ASSET_ROOT =
+  'https://raw.githubusercontent.com/A5spas/Aifeel-360/main/';
+
+// ================================================================
+// SPA-SPECIFIC SETTINGS
+// For the next spa, these are the main values you need to change.
+// ================================================================
+const SPA_NAME = 'Commodore';
+const SPA_FOLDER = 'Spa_Commodore';
+const MODEL_FILE = 'spa_commodore.glb';
+const DEFAULT_SHELL = 'white-gloss';
+const DEFAULT_CASING = 'ash-light-grey';
+
+// Bump this whenever the model/material files on GitHub are replaced.
+// This forces browsers/CDNs to fetch the latest assets.
+const ASSET_VERSION = 'v51';
+const versioned = url => `${url}?v=${ASSET_VERSION}`;
+
+const MODEL_URL = versioned(
+  `${ASSET_ROOT}${SPA_FOLDER}/${MODEL_FILE}`
+);
+
+const MODEL_NAME = SPA_NAME;
+const MATERIAL_ROOT = ASSET_ROOT + 'Materials/';
+
+const CASING_FINISHES = {
+  'ash-light-grey': {
+    name: 'Ash (Light Grey)',
+    basecolor: versioned(MATERIAL_ROOT + 'casing/casing_ash_light_grey_basecolor.jpg'),
+    normal: versioned(MATERIAL_ROOT + 'casing/casing_ash_light_grey_normal.jpg'),
+    roughness: versioned(MATERIAL_ROOT + 'casing/casing_ash_light_grey_roughness.jpg')
+  },
+  charcoal: {
+    name: 'Charcoal',
+    basecolor: versioned(MATERIAL_ROOT + 'casing/casing_charcoal_basecolor.jpg'),
+    normal: versioned(MATERIAL_ROOT + 'casing/casing_charcoal_normal.jpg'),
+    roughness: versioned(MATERIAL_ROOT + 'casing/casing_charcoal_roughness.jpg')
+  },
+  black: {
+    name: 'Black',
+    basecolor: versioned(MATERIAL_ROOT + 'casing/casing_black_basecolor.jpg'),
+    normal: versioned(MATERIAL_ROOT + 'casing/casing_black_normal.jpg'),
+    roughness: versioned(MATERIAL_ROOT + 'casing/casing_black_roughness.jpg')
+  },
+  'dark-grey': {
+    name: 'Dark Grey',
+    basecolor: versioned(MATERIAL_ROOT + 'casing/casing_dark_grey_basecolor.jpg'),
+    normal: versioned(MATERIAL_ROOT + 'casing/casing_dark_grey_normal.jpg'),
+    roughness: versioned(MATERIAL_ROOT + 'casing/casing_dark_grey_roughness.jpg')
+  }
+};
+
+const SHELL_FINISHES = {
+  'silver-marble': {
+    name: 'Silver Marble',
+    basecolor: versioned(MATERIAL_ROOT + 'shell/silver_marble.jpg')
+  },
+  'midnight-opal': {
+    name: 'Midnight Opal',
+    basecolor: versioned(MATERIAL_ROOT + 'shell/midnight_opal.jpg')
+  },
+  'white-gloss': {
+    name: 'White Gloss',
+    basecolor: versioned(MATERIAL_ROOT + 'shell/high_gloss_white.jpg')
+  },
+  'ocean-wave': {
+    name: 'Ocean Wave',
+    basecolor: versioned(MATERIAL_ROOT + 'shell/ocean_wave.jpg')
+  }
+};
+
+const state = {
+  casing: DEFAULT_CASING,
+  shell: DEFAULT_SHELL,
+  autoRotate: true
+};
+
+const canvas = document.getElementById('webgl');
+const loading = document.getElementById('loading');
+const loadBar = document.getElementById('loadBar');
+
+// Populate all product-specific UI from SPA_NAME / defaults above.
+document.getElementById('productName').textContent = SPA_NAME;
+document.getElementById('loadTitle').textContent = `LOADING ${SPA_NAME.toUpperCase()}`;
+document.getElementById('status').textContent = `Loading ${SPA_NAME}…`;
+document.querySelectorAll('.swatch[data-type="shell"]').forEach(btn =>
+  btn.classList.toggle('selected', btn.dataset.value === DEFAULT_SHELL)
+);
+document.querySelectorAll('.swatch[data-type="cabinet"]').forEach(btn =>
+  btn.classList.toggle('selected', btn.dataset.value === DEFAULT_CASING)
+);
+const loadPct = document.getElementById('loadPct');
+const loadTitle = document.getElementById('loadTitle');
+const status = document.getElementById('status');
+
+let scene, camera, renderer, controls, model;
+let casingMaterials = [];
+let shellMaterials = [];
+let casingEntries = [];
+let textureCache = new Map();
+let hdrTexture = null;
+let keyLight = null;
+let fillLight = null;
+let rimLight = null;
+let hemiLight = null;
+let keyLightWidth = 5.0, keyLightHeight = 4.0;
+let fillLightWidth = 4.0, fillLightHeight = 3.0;
+let rimLightWidth = 4.0, rimLightHeight = 3.0;
+let currentLightPreset = 'setup1';
+let lightIntensity = 2.0; // slider midpoint (50) preserves the current lighting level
+let fitReferenceHeight = 0;
+let fitReferenceAspect = 1;
+let fitReferenceDistance = 1;
+let fitDirection = new THREE.Vector3(1, 0.6, 1).normalize();
+let fitTarget = new THREE.Vector3();
+
+const LIGHT_PRESETS = {
+  setup1: {
+    key: 5.5, fill: 3.0, rim: 3.2, hemi: 0.500, exposure: 1.08, env: 0.24,
+    keyPos: [5.0, 8.5, 4.5], fillPos: [-4.5, 6.0, 5.5], rimPos: [-4.0, 7.5, -7.5]
+  },
+  setup2: {
+    key: 4.8, fill: 3.2, rim: 3.6, hemi: 0.500, exposure: 1.10, env: 0.28,
+    keyPos: [4.5, 9.0, 3.5], fillPos: [-5.0, 6.5, 5.0], rimPos: [-4.5, 8.0, -8.0]
+  }
+};
+
+let lightSettings = structuredClone(LIGHT_PRESETS);
+
+const HDRI_URLS = {
+  setup1: ASSET_ROOT + 'HDRI/HDRI_001.hdr',
+  setup2: ASSET_ROOT + 'HDRI/HDRI_002.hdr'
+};
+
+let hdrLoadToken = 0;
+
+function aimStudioLight(light) {
+  if (!light) return;
+  light.lookAt(0, 0.65, 0);
+}
+
+function applyLightingPreset(name) {
+  const p = LIGHT_PRESETS[name] || LIGHT_PRESETS.setup1;
+  currentLightPreset = LIGHT_PRESETS[name] ? name : 'setup1';
+
+  lightSettings[currentLightPreset] = structuredClone(lightSettings[currentLightPreset] || p);
+  const s = lightSettings[currentLightPreset];
+
+  renderer.toneMappingExposure = p.exposure;
+  if (keyLight) {
+    keyLight.intensity = s.key * lightIntensity;
+    keyLight.position.set(...s.keyPos);
+    aimStudioLight(keyLight);
+  }
+  if (fillLight) {
+    fillLight.intensity = s.fill * lightIntensity;
+    fillLight.position.set(...s.fillPos);
+    aimStudioLight(fillLight);
+  }
+  if (rimLight) {
+    rimLight.intensity = s.rim * lightIntensity;
+    rimLight.position.set(...s.rimPos);
+    aimStudioLight(rimLight);
+  }
+  if (hemiLight) hemiLight.intensity = s.hemi * lightIntensity;
+  if (scene && hdrTexture) scene.environmentIntensity = p.env;
+
+
+  document.querySelectorAll('.light-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.light === currentLightPreset);
+  });
+
+  loadHDRI(currentLightPreset);
+  syncHash();
+}
+
+function loadHDRI(name) {
+  const url = HDRI_URLS[name];
+  if (!url || !renderer || !scene) return;
+
+  const token = ++hdrLoadToken;
+  const loader = new HDRLoader();
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  pmrem.compileEquirectangularShader();
+
+  loader.load(
+    url,
+    texture => {
+      if (token !== hdrLoadToken) {
+        texture.dispose();
+        pmrem.dispose();
+        return;
+      }
+
+      texture.mapping = THREE.EquirectangularReflectionMapping;
+      texture.colorSpace = THREE.LinearSRGBColorSpace;
+
+      const filtered = pmrem.fromEquirectangular(texture).texture;
+      texture.dispose();
+      pmrem.dispose();
+
+      const old = hdrTexture;
+      hdrTexture = filtered;
+      scene.environment = filtered;
+      scene.environmentIntensity = LIGHT_PRESETS[currentLightPreset].env;
+      old?.dispose();
+    },
+    undefined,
+    err => {
+      pmrem.dispose();
+      console.warn(`HDRI failed to load for ${name}:`, err);
+      if (token === hdrLoadToken && scene) {
+        scene.environment = null;
+        scene.environmentIntensity = 0;
+      }
+    }
+  );
+}
+
+
+init();
+
+function init() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+
+  camera = new THREE.PerspectiveCamera(28, 1, 0.01, 5000);
+  camera.position.set(4.4, 3.0, 4.4);
+
+  renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.98;
+  // No hard shadow casting: the HDRI handles environment/reflections, while
+  // broad RectAreaLights reproduce the V-Ray-style key/fill/rim look without
+  // painting hard directional shadows across the spa.
+  renderer.shadowMap.enabled = false;
+  RectAreaLightUniformsLib.init();
+
+  keyLight = new THREE.RectAreaLight(0xffffff, LIGHT_PRESETS.setup1.key, keyLightWidth, keyLightHeight);
+  keyLight.position.set(...LIGHT_PRESETS.setup1.keyPos);
+  aimStudioLight(keyLight);
+  scene.add(keyLight);
+
+  fillLight = new THREE.RectAreaLight(0xffffff, LIGHT_PRESETS.setup1.fill, fillLightWidth, fillLightHeight);
+  fillLight.position.set(...LIGHT_PRESETS.setup1.fillPos);
+  aimStudioLight(fillLight);
+  scene.add(fillLight);
+
+  rimLight = new THREE.RectAreaLight(0xffffff, LIGHT_PRESETS.setup1.rim, rimLightWidth, rimLightHeight);
+  rimLight.position.set(...LIGHT_PRESETS.setup1.rimPos);
+  aimStudioLight(rimLight);
+  scene.add(rimLight);
+
+  hemiLight = new THREE.HemisphereLight(0xffffff, 0xaaaaaa, LIGHT_PRESETS.setup1.hemi);
+  scene.add(hemiLight);
+
+  // Apply the initial preset only after all lights exist.
+  applyLightingPreset(currentLightPreset);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.07;
+  controls.enablePan = false;
+  controls.minDistance = 2;
+  controls.maxDistance = 14;
+  controls.autoRotateSpeed = 0.45;
+  controls.autoRotate = true;
+  controls.target.set(0, 0.6, 0);
+
+  // Product spins automatically until the user interacts with it.
+  controls.addEventListener('start', () => {
+    if (state.autoRotate) {
+      state.autoRotate = false;
+      controls.autoRotate = false;
+      syncPlayButton();
+    }
+  });
+
+  renderer.setAnimationLoop(animate);
+  window.addEventListener('resize', resize);
+
+  document.getElementById('reset').onclick = resetView;
+  document.getElementById('play').onclick = toggleRotate;
+  document.getElementById('full').onclick = toggleFullscreen;
+
+  const lightIntensitySlider = document.getElementById('lightIntensity');
+  const intensityValue = document.getElementById('intensityValue');
+  lightIntensitySlider.addEventListener('input', () => {
+    // 0–100 UI range with the midpoint preserving the current 2.0x lighting.
+    // 50 = current level, 100 = 4.0x, 0 = lights off.
+    lightIntensity = Number(lightIntensitySlider.value) / 25;
+    intensityValue.textContent = `${lightIntensitySlider.value}%`;
+    applyLightingPreset(currentLightPreset);
+  });
+
+  document.querySelectorAll('.light-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentLightPreset = btn.dataset.light;
+      document.querySelectorAll('.light-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      applyLightingPreset(currentLightPreset);
+    });
+  });
+
+  syncPlayButton();
+
+  document.querySelectorAll('.swatch').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const uiType = btn.dataset.type;
+      const type = uiType === 'cabinet' ? 'casing' : 'shell';
+      const value = btn.dataset.value;
+
+      state[type] = value;
+      selectButton(btn);
+      await applyFinish(type, value);
+      syncHash();
+    });
+  });
+
+  resize();
+  restoreHash();
+  loadModel();
+}
+
+function loadModel() {
+  loadTitle.textContent = `LOADING ${MODEL_NAME.toUpperCase()}`;
+  const loader = new GLTFLoader();
+
+  loader.load(
+    MODEL_URL,
+    gltf => {
+      model = gltf.scene;
+      scene.add(model);
+
+      model.traverse(obj => {
+        if (!obj.isMesh || !obj.material) return;
+
+        obj.castShadow = true;
+        obj.receiveShadow = true;
+
+        const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+
+        mats.forEach(mat => {
+          if (!mat) return;
+
+          const materialName = (mat.name || '').toLowerCase();
+          const objectName = (obj.name || '').toLowerCase();
+          const combined = materialName + ' ' + objectName;
+
+          // Give the acrylic shell a cleaner, brighter studio response.
+          // This does not alter the texture itself; it only controls the
+          // PBR response so the shell reads closer to the V-Ray reference.
+          if (materialName === 'shell_silver_marble') {
+            if ('metalness' in mat) mat.metalness = 0.0;
+            if ('roughness' in mat) mat.roughness = 0.22;
+            if ('envMapIntensity' in mat) mat.envMapIntensity = 1.45;
+            mat.color.setRGB(1.0, 1.0, 1.0);
+            if ('clearcoat' in mat) mat.clearcoat = 0.10;
+            if ('clearcoatRoughness' in mat) mat.clearcoatRoughness = 0.18;
+            mat.needsUpdate = true;
+          }
+
+          // The corner LED emitter sits extremely close to the surrounding
+          // casing/light-edge geometry. On small mobile viewports the reduced
+          // depth-buffer precision makes those adjacent surfaces prone to
+          // z-fighting/flicker. Keep the emitter depth-tested for proper
+          // occlusion, but bias it slightly toward the camera and prevent it
+          // from writing depth so the adjacent casing cannot fight with it.
+          if (materialName === 'light_casing_corner' || objectName === 'casing_corner_light_emit') {
+            obj.renderOrder = 20;
+            obj.castShadow = false;
+            obj.receiveShadow = false;
+            mat.depthTest = true;
+            mat.depthWrite = false;
+            mat.polygonOffset = true;
+            mat.polygonOffsetFactor = -2;
+            mat.polygonOffsetUnits = -2;
+            mat.needsUpdate = true;
+          }
+
+          if (isCasingTarget(objectName, materialName)) {
+            casingMaterials.push(mat);
+            casingEntries.push({ material: mat, isCorner: false });
+          }
+
+          if (isShellTarget(objectName, materialName)) {
+            shellMaterials.push(mat);
+          }
+        });
+      });
+
+      casingMaterials = [...new Set(casingMaterials)];
+      shellMaterials = [...new Set(shellMaterials)];
+
+      // Exact material indices in the exported Westwood GLB:
+      // 0 = shell_silver_marble
+      // 9 = casing_wood_ash_light_grey
+      console.log('A5 Westwood material targets / v45');
+      console.log('Casing materials:', casingMaterials.map(m => m.name));
+      console.log('Shell materials:', shellMaterials.map(m => m.name));
+
+      fitModel();
+      loading.style.display = 'none';
+
+      document.querySelectorAll('.light-btn').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.light === currentLightPreset);
+      });
+      applyLightingPreset(currentLightPreset);
+
+      // Apply initial choices from the current URL/defaults.
+      Promise.all([
+        applyFinish('casing', state.casing),
+        applyFinish('shell', state.shell)
+      ]).catch(err => console.error('Initial material setup failed:', err));
+
+      updateStatus();
+    },
+    xhr => {
+      if (xhr.total) {
+        const pct = Math.round(xhr.loaded / xhr.total * 100);
+        loadBar.style.width = pct + '%';
+        loadPct.textContent = pct + '%';
+      } else {
+        loadPct.textContent = 'Downloading…';
+      }
+    },
+    err => {
+      console.error('GLB load error:', err);
+      document.querySelector('.bar').style.display = 'none';
+      loadTitle.innerHTML =
+        '<div class="loaderror"><strong>Unable to load the 3D model.</strong>' +
+        '<br>Check the GitHub model URL and browser console.</div>';
+      loadPct.textContent = MODEL_URL;
+      status.textContent = 'Model failed to load.';
+    }
+  );
+}
+
+function isCasingTarget(objectName, materialName) {
+  if (materialName !== 'casing_wood_ash_light_grey') return false;
+
+  // Keep the dedicated blue light emitter material untouched, but apply the
+  // configurable casing finish to all of the surrounding casing geometry.
+  return (
+    objectName === 'casing_side' ||
+    objectName === 'casing_side_edge' ||
+    objectName === 'casing_corner' ||
+    objectName === 'casing_corner_light_edge'
+  );
+}
+
+function isShellTarget(objectName, materialName) {
+  return materialName === 'shell_silver_marble';
+}
+
+async function applyFinish(type, key) {
+  if (!model) return;
+
+  const normalizedType = type === 'cabinet' ? 'casing' : type;
+  const finish = normalizedType === 'casing'
+    ? CASING_FINISHES[key]
+    : SHELL_FINISHES[key];
+
+  if (!finish) return;
+
+  try {
+    if (normalizedType === 'casing') {
+      const [baseColor, normal, roughness] = await Promise.all([
+        loadTexture(finish.basecolor, true),
+        loadTexture(finish.normal, false),
+        loadTexture(finish.roughness, false)
+      ]);
+
+      // Use each mesh's exported UVs exactly as authored. Do not rotate the corner UVs.
+      casingEntries.forEach(entry => {
+        const mat = entry.material;
+        const target = entry.isCorner ? mat.clone() : mat;
+
+        target.map = entry.isCorner ? baseColor.clone() : baseColor;
+        target.normalMap = entry.isCorner ? normal.clone() : normal;
+        target.roughnessMap = entry.isCorner ? roughness.clone() : roughness;
+        target.color.setRGB(1.12, 1.12, 1.12);
+        if ('metalness' in target) target.metalness = 0.0;
+
+
+        target.needsUpdate = true;
+      });
+
+      // Preserve the original material list for logging/deduplication.
+      casingMaterials = [...new Set(casingMaterials)];
+
+      status.textContent = `Casing: ${finish.name} • Shell: ${SHELL_FINISHES[state.shell].name}`;
+    } else {
+      const baseColor = await loadTexture(finish.basecolor, true);
+
+      const shellProfile = {
+        silver_marble: { roughness: 0.22, env: 1.45, clearcoat: 0.10, clearcoatRoughness: 0.18 },
+        midnight_opal: { roughness: 0.24, env: 1.25, clearcoat: 0.10, clearcoatRoughness: 0.20 },
+        white_gloss: { roughness: 0.28, env: 1.10, clearcoat: 0.08, clearcoatRoughness: 0.22 },
+        ocean_wave: { roughness: 0.24, env: 1.30, clearcoat: 0.10, clearcoatRoughness: 0.20 }
+      };
+      const profile = shellProfile[key] || shellProfile.silver_marble;
+
+      shellMaterials.forEach(mat => {
+        mat.map = baseColor;
+        mat.color.setRGB(1.0, 1.0, 1.0);
+        if ('metalness' in mat) mat.metalness = 0.0;
+        if ('roughness' in mat) mat.roughness = profile.roughness;
+        if ('envMapIntensity' in mat) mat.envMapIntensity = profile.env;
+        if ('clearcoat' in mat) mat.clearcoat = profile.clearcoat;
+        if ('clearcoatRoughness' in mat) mat.clearcoatRoughness = profile.clearcoatRoughness;
+        mat.needsUpdate = true;
+      });
+
+      status.textContent = `Casing: ${CASING_FINISHES[state.casing].name} • Shell: ${finish.name}`;
+    }
+  } catch (err) {
+    console.error(`Failed to load ${type} finish "${key}"`, err);
+    status.textContent = `Unable to load ${finish.name} — check the GitHub filename/path.`;
+  }
+}
+
+function loadTexture(url, srgb) {
+  if (textureCache.has(url)) return textureCache.get(url);
+
+  const promise = new Promise((resolve, reject) => {
+    const loader = new THREE.TextureLoader();
+
+    loader.load(
+      url,
+      texture => {
+        // Match the GLB sampler: REPEAT wrapping, preserving authored UVs that extend beyond 0–1.
+        texture.flipY = false;
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(1, 1);
+        texture.offset.set(0, 0);
+
+        if (srgb) {
+          texture.colorSpace = THREE.SRGBColorSpace;
+        } else {
+          texture.colorSpace = THREE.NoColorSpace;
+        }
+
+        texture.anisotropy = Math.min(
+          renderer.capabilities.getMaxAnisotropy(),
+          8
+        );
+
+        texture.needsUpdate = true;
+        console.log('Loaded A5 finish texture:', url);
+        resolve(texture);
+      },
+      undefined,
+      error => {
+        textureCache.delete(url);
+        reject(new Error(`Texture failed: ${url}`));
+      }
+    );
+  });
+
+  textureCache.set(url, promise);
+  return promise;
+}
+
+function fitModel() {
+  if (!model) return;
+
+  const box = new THREE.Box3().setFromObject(model);
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+
+  model.position.sub(center);
+
+  const maxDim = Math.max(size.x, size.y, size.z);
+  camera.near = Math.max(0.01, maxDim / 1000);
+  camera.far = Math.max(100, maxDim * 20);
+
+  fitDirection.set(0.95, 0.55, 0.95).normalize();
+  fitTarget.set(0, portraitFitTargetYOffset(size.y), 0);
+
+  controls.target.copy(fitTarget);
+  controls.minDistance = maxDim * 0.55;
+  controls.maxDistance = maxDim * 4.5;
+
+  // Reset to a true dynamic fit for the current viewport. This is deliberately
+  // based on the model's bounding sphere rather than the viewport size at the
+  // moment the page first loaded, so portrait/mobile resizing stays reliable.
+  const fitDistance = calculateDynamicFitDistance();
+  camera.position.copy(fitTarget).addScaledVector(fitDirection, fitDistance);
+  controls.update();
+
+  lastFitDistance = fitDistance;
+}
+
+let lastFitDistance = 1;
+
+function portraitFitTargetYOffset(modelHeight) {
+  const portrait = window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+  if (!portrait) return -modelHeight * 0.08;
+
+  const panel = document.getElementById('panel');
+  const stage = document.getElementById('stage');
+  const stageRect = stage.getBoundingClientRect();
+  const panelTop = panel ? (panel.getBoundingClientRect().top - stageRect.top) : stageRect.height * 0.82;
+  const viewerHeight = Math.max(1, panelTop);
+
+  // Centre the model in the actual visible viewer area above the options.
+  // Keep only a small natural upward bias so the spa doesn't sit on the bottom edge.
+  const centreBias = Math.min(0.035, viewerHeight / Math.max(1, stageRect.height) * 0.04);
+  return -modelHeight * centreBias;
+}
+
+function calculateDynamicFitDistance() {
+  if (!model) return lastFitDistance;
+
+  const stage = document.getElementById('stage');
+  const w = Math.max(1, stage.clientWidth);
+  const stageRect = stage.getBoundingClientRect();
+  const h = Math.max(1, stageRect.height);
+  const portrait = window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+
+  const panel = document.getElementById('panel');
+  // On mobile Safari the browser chrome changes the visual viewport. Use the
+  // actual panel top edge so the model is fitted to the real visible 3D area.
+  const panelTop = portrait && panel ? panel.getBoundingClientRect().top - stageRect.top : h;
+  const visibleHeight = Math.max(1, Math.min(h, panelTop));
+  const visibleAspect = w / visibleHeight;
+
+  const box = new THREE.Box3().setFromObject(model);
+  const sphere = new THREE.Sphere();
+  box.getBoundingSphere(sphere);
+
+  const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+  const horizontalFov = 2 * Math.atan(Math.tan(verticalFov * 0.5) * Math.max(0.1, visibleAspect));
+  const limitingFov = Math.min(verticalFov, horizontalFov);
+
+  // A little breathing room keeps the complete spa visible without looking tiny.
+  const margin = portrait ? 1.28 : 1.12;
+  return sphere.radius / Math.tan(limitingFov * 0.5) * margin;
+}
+
+function updateResponsiveFit() {
+  if (!model || !controls) return;
+
+  const currentDistance = camera.position.distanceTo(controls.target);
+  const previousFit = Math.max(0.001, lastFitDistance);
+  const zoomRatio = Math.min(2.5, Math.max(0.75, currentDistance / previousFit));
+  const portrait = window.matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+
+  const fitDistance = calculateDynamicFitDistance();
+  lastFitDistance = fitDistance;
+
+  // In portrait mode the viewer must always prioritise showing the complete
+  // spa when the browser/page gets narrower or shorter. Desktop keeps the
+  // user's zoom ratio.
+  const newDistance = portrait ? fitDistance : fitDistance * zoomRatio;
+  const direction = camera.position.clone().sub(controls.target);
+  if (direction.lengthSq() < 1e-8) direction.copy(fitDirection);
+  direction.normalize();
+
+  camera.position.copy(controls.target).addScaledVector(direction, newDistance);
+  controls.update();
+}
+
+function sizeYForFit(object) {
+  const box = new THREE.Box3().setFromObject(object);
+  return Math.max(0.001, box.getSize(new THREE.Vector3()).y);
+}
+
+function syncPlayButton() {
+  const btn = document.getElementById('play');
+  if (!btn) return;
+  btn.textContent = state.autoRotate ? '❚❚' : '▶';
+  btn.title = state.autoRotate ? 'Pause rotation' : 'Start rotation';
+  btn.setAttribute('aria-label', state.autoRotate ? 'Pause rotation' : 'Start rotation');
+}
+
+function resetView() {
+  if (!model) return;
+
+  fitModel();
+  state.autoRotate = true;
+  controls.autoRotate = true;
+  syncPlayButton();
+}
+
+function toggleRotate() {
+  state.autoRotate = !state.autoRotate;
+  controls.autoRotate = state.autoRotate;
+  syncPlayButton();
+}
+
+function toggleFullscreen() {
+  const el = document.getElementById('stage');
+
+  if (!document.fullscreenElement) {
+    el.requestFullscreen?.();
+  } else {
+    document.exitFullscreen?.();
+  }
+}
+
+function selectButton(btn) {
+  document
+    .querySelectorAll(`.swatch[data-type="${btn.dataset.type}"]`)
+    .forEach(x => x.classList.remove('selected'));
+
+  btn.classList.add('selected');
+}
+
+function updateStatus() {
+  status.textContent =
+    `Casing: ${CASING_FINISHES[state.casing].name} • Shell: ${SHELL_FINISHES[state.shell].name}`;
+}
+
+function syncHash() {
+  history.replaceState(
+    null,
+    '',
+    `#casing=${encodeURIComponent(state.casing)}&shell=${encodeURIComponent(state.shell)}&light=${encodeURIComponent(currentLightPreset)}`
+  );
+}
+
+function restoreHash() {
+  const params = new URLSearchParams(location.hash.replace(/^#/, ''));
+
+  if (CASING_FINISHES[params.get('casing')]) {
+    state.casing = params.get('casing');
+  } else if (CASING_FINISHES[params.get('cabinet')]) {
+    state.casing = params.get('cabinet');
+  }
+
+  if (SHELL_FINISHES[params.get('shell')]) {
+    state.shell = params.get('shell');
+  }
+
+  if (['setup1','setup2'].includes(params.get('light'))) {
+    currentLightPreset = params.get('light');
+  }
+
+  document.querySelectorAll('.swatch').forEach(btn => {
+    const type = btn.dataset.type === 'cabinet' ? 'casing' : 'shell';
+    btn.classList.toggle('selected', state[type] === btn.dataset.value);
+  });
+}
+
+
+function resize() {
+  const stage = document.getElementById('stage');
+  const w = stage.clientWidth;
+  const h = stage.clientHeight;
+
+  renderer.setSize(w, h, false);
+
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  if (model) updateResponsiveFit();
+}
+
+function animate() {
+  controls.update();
+  renderer.render(scene, camera);
+}
+</script>
+	<!-- open panel script -->
+<script>
+  const panel = document.querySelector('aside');
+  
+  panel.addEventListener('click', function(e) {
+    // 1. Target the actual clicked element to check if it's a swatch or button
+    const isSwatchClick = e.target.closest('.swatch') || e.target.closest('.light-btn') || e.target.closest('.action');
+    
+    // 2. If they clicked a color swatch, button, or slider, EXIT early so the panel stays open!
+    if (isSwatchClick) {
+      return; 
+    }
+    
+    // 3. Detects if the user clicked within the top 40px bounding box of the panel (the handle area)
+    if (e.offsetY < 40) {
+      // Toggle the expansion state across the entire document page
+      document.body.classList.toggle('panel-expanded');
+      panel.classList.toggle('expanded');
+      
+      // If expanding, gently snap the scrollbar back to the top automatically
+      if (panel.classList.contains('expanded')) {
+        panel.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      
+      // Run the designer's custom sizing and responsive fit function if it exists
+      if (typeof resize === 'function') {
+        let startTime = performance.now();
+        function smoothResizeLoop(now) {
+          resize();
+          if (now - startTime < 400) {
+            requestAnimationFrame(smoothResizeLoop);
+          }
+        }
+        requestAnimationFrame(smoothResizeLoop);
+      }
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
