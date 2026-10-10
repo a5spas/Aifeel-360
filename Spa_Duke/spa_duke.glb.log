@@ -72,10 +72,10 @@
 		<count>5</count>
 		<item_version>0</item_version>
 		<item>1</item>
-		<item>17</item>
+		<item>10</item>
 		<item>1</item>
-		<item>134</item>
-		<item>35</item>
+		<item>40</item>
+		<item>31</item>
 	</v2>
 </e>
 <e class_id_reference="2">
@@ -273,880 +273,6 @@
 			<strData></strData>
 		</m_objectId>
 		<m_startTime class_id="12" tracking_level="0" version="0">
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:specular</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:specular</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
 			<timestamp></timestamp>
 		</m_startTime>
 		<m_endTime>
@@ -1686,139 +812,6 @@
 		</m_endTime>
 	</ObjectProcessEvent>
 	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
 		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
 	</message>
 </e>
@@ -1877,158 +870,6 @@
 	</ObjectProcessEvent>
 	<message>
 		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
 	</message>
 </e>
 <e class_id_reference="10">
@@ -2237,6 +1078,25 @@
 		</m_endTime>
 	</ObjectProcessEvent>
 	<message>
+		<strData>Warning: Invalid shader node:transmission</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
 		<strData>Warning: Invalid shader node:opacity</strData>
 	</message>
 </e>
@@ -2276,6 +1136,25 @@
 	</ObjectProcessEvent>
 	<message>
 		<strData>Warning: Invalid shader node:sheen</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:specular</strData>
 	</message>
 </e>
 <e class_id_reference="10">
@@ -2814,6 +1693,310 @@
 	<ObjectProcessEvent>
 		<Event></Event>
 		<m_role>3</m_role>
+		<m_eventSeverity>3</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>got document version: 1.39, upgrading to 1.38...</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:occlusionTexture</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:occlusionStrength</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:normal</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:opacity</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:coat</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:sheen</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>3</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>got document version: 1.39, upgrading to 1.38...</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:occlusionTexture</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:occlusionStrength</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:transmission</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:opacity</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:coat</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
+		<m_eventSeverity>2</m_eventSeverity>
+		<m_objectId>
+			<strData></strData>
+		</m_objectId>
+		<m_startTime>
+			<timestamp></timestamp>
+		</m_startTime>
+		<m_endTime>
+			<timestamp></timestamp>
+		</m_endTime>
+	</ObjectProcessEvent>
+	<message>
+		<strData>Warning: Invalid shader node:sheen</strData>
+	</message>
+</e>
+<e class_id_reference="10">
+	<ObjectProcessEvent>
+		<Event></Event>
+		<m_role>3</m_role>
 		<m_eventSeverity>2</m_eventSeverity>
 		<m_objectId>
 			<strData></strData>
@@ -2827,348 +2010,6 @@
 	</ObjectProcessEvent>
 	<message>
 		<strData>Warning: Invalid shader node:specular</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>3</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>got document version: 1.39, upgrading to 1.38...</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:alpha_cutoff</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionTexture</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:occlusionStrength</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:normal</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:transmission</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:opacity</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
-	</message>
-</e>
-<e class_id_reference="10">
-	<ObjectProcessEvent>
-		<Event></Event>
-		<m_role>3</m_role>
-		<m_eventSeverity>2</m_eventSeverity>
-		<m_objectId>
-			<strData></strData>
-		</m_objectId>
-		<m_startTime>
-			<timestamp></timestamp>
-		</m_startTime>
-		<m_endTime>
-			<timestamp></timestamp>
-		</m_endTime>
-	</ObjectProcessEvent>
-	<message>
-		<strData>Warning: Invalid shader node:sheen</strData>
 	</message>
 </e>
 <e class_id_reference="2">
@@ -3626,10 +2467,10 @@
 				<strData>false</strData>
 			</item>
 			<item>
-				<strData>9.01</strData>
+				<strData>10.98</strData>
 			</item>
 			<item>
-				<strData>498</strData>
+				<strData>681</strData>
 			</item>
 		</v2>
 	</WorkdataEvent>
