@@ -74,8 +74,8 @@
 		<item>1</item>
 		<item>12</item>
 		<item>1</item>
-		<item>37</item>
-		<item>35</item>
+		<item>40</item>
+		<item>38</item>
 	</v2>
 </e>
 <e class_id_reference="2">
@@ -2809,7 +2809,7 @@
 				<strData>false</strData>
 			</item>
 			<item>
-				<strData>11.39</strData>
+				<strData>11.26</strData>
 			</item>
 			<item>
 				<strData>756</strData>
