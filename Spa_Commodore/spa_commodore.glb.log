@@ -42,7 +42,7 @@
 				<strData>0.00</strData>
 			</item>
 			<item>
-				<strData>1</strData>
+				<strData>0</strData>
 			</item>
 		</v2>
 	</WorkdataEvent>
@@ -2332,7 +2332,7 @@
 		</m_endTime>
 	</ObjectProcessEvent>
 	<message>
-		<strData>Warning: Invalid shader node:coat</strData>
+		<strData>Warning: Invalid shader node:coat_normal</strData>
 	</message>
 </e>
 <e class_id_reference="10">
@@ -2809,10 +2809,10 @@
 				<strData>false</strData>
 			</item>
 			<item>
-				<strData>11.26</strData>
+				<strData>10.89</strData>
 			</item>
 			<item>
-				<strData>756</strData>
+				<strData>755</strData>
 			</item>
 		</v2>
 	</WorkdataEvent>
