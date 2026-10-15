@@ -42,7 +42,7 @@
 				<strData>0.00</strData>
 			</item>
 			<item>
-				<strData>1</strData>
+				<strData>0</strData>
 			</item>
 		</v2>
 	</WorkdataEvent>
@@ -2638,7 +2638,7 @@
 				<strData>false</strData>
 			</item>
 			<item>
-				<strData>10.41</strData>
+				<strData>10.45</strData>
 			</item>
 			<item>
 				<strData>681</strData>
